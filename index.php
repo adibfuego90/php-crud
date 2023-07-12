@@ -1,3 +1,21 @@
+<?php
+// Connection to the database 
+$servername ="localhost";
+$username = "root";
+$password= "";
+$database="notes";
+
+//Create a connection 
+$conn = mysqli_connect($servername,$username,$password,$database
+)
+
+// Check the connection 
+if(!$conn){
+  die("Not connected :".mysqli_connect_errno());
+}else{
+  echo "Connected"
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
