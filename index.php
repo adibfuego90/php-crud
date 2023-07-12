@@ -1,4 +1,6 @@
 <?php
+// INSERT INTO `notes` (`sno`, `title`, `description`, `tstamp`) VALUES (NULL, 'My me a apple ', 'Apple is a good fruits and want to eat apple.', current_timestamp());
+
 // Connection to the database 
 $servername ="localhost";
 $username = "root";
@@ -7,14 +9,14 @@ $database="notes";
 
 //Create a connection 
 $conn = mysqli_connect($servername,$username,$password,$database
-)
+);
 
 // Check the connection 
 if(!$conn){
   die("Not connected :".mysqli_connect_errno());
 }else{
-  echo "Connected"
-}
+  echo "Connected";
+};
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -94,7 +96,15 @@ if(!$conn){
     </div>
     <div class="container">
       <?php
+       $sql="SELECT * FROM `notes`";
+       $result = mysqli_query($conn,$sql);
 
+       while($row =mysqli_fetch_assoc($result)){
+        // echo var_dump($row);
+        echo $row['sno'].". Title ".$row['title']."Description is ".
+        $row['description'];
+        echo "<br>";
+       };
       ?>
     </div>
     <script
